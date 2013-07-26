@@ -18,10 +18,12 @@ To remove these dependencies, simply remove the colors and glyphs from the sprin
 
 **Installation:**
 
-To build and install simply run:
+Arch Linux users can simply use the PKGBUILD to build and install.  
+
+Other linux users can simply clone this repository and run:
 
 	$ make
-	# make clean install
+	# make install
 
 If you wish to have dwmstat re-launch after suspending your computer, enable the systemd service file:
 `systemctl enable dwmstat.service`

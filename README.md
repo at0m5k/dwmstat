@@ -27,4 +27,4 @@ If you wish to have dwmstat re-launch after suspending your computer, enable the
 `systemctl enable dwmstat.service`
 
 **Todo:**
-* Clean up battery code.
+* Minor code clean ups.

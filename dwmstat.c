@@ -104,10 +104,8 @@ char *get_bat(char *buf) {
 	rate = ((float)voltage * (float)rate);
 	perc = (now * 100) / full;
 
-	if(strncmp(state, "Full", 8) == 0)
+	if(perc == 100)
 		sprintf(buf, BAT_FULL_S);
-	else if(strncmp(state, "Unknown", 8) == 0)
-		sprintf(buf, BAT_UNKN_S);
 	else {
 		if(strncmp(state, "Charging", 8) == 0)
 			seconds = 3600 * (((float)full - (float)now) / (float)rate);
@@ -116,15 +114,10 @@ char *get_bat(char *buf) {
 		hours = seconds / 3600;
 		seconds -= 3600 * hours;
 		minutes = seconds / 60;
-		seconds -= 60 * minutes;
 		if(strncmp(state, "Charging", 8) == 0)
 			sprintf(buf, BAT_CHRG_S, perc, hours, minutes);
-		else {
-			if(perc < BAT_LOW_P || minutes < BAT_LOW_T)
-				sprintf(buf, BAT_LOW_S, perc, hours, minutes);
-			else
-				sprintf(buf, BAT_S, perc, hours, minutes);
-		}
+		else
+			sprintf(buf, perc < BAT_LOW_P ? BAT_LOW_S : BAT_S, perc, hours, minutes);
 	}
 	return buf;
 }

@@ -78,11 +78,13 @@ char *get_cpu(char *buf) {
 }
 
 char *get_mem(char *buf) {
+	int num;
 	long buffers, cached, free, total;
 	infile = fopen(MEM_F, "r");
 	fscanf(infile, "MemTotal: %ld kB\nMemFree: %ld kB\nBuffers: %ld kB\nCached: %ld kB\n",
 	    &total, &free, &buffers, &cached); fclose(infile);
-	sprintf(buf, MEM_S, 100 * (free + buffers + cached) / total);
+	num = 100 * (free + buffers + cached) / total;
+	sprintf(buf, num < MEM_LOW ? MEM_LOW_S : MEM_S, num);
 	return buf;
 }
 

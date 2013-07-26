@@ -2,6 +2,7 @@
 #define BAT_LOW_P   10
 #define BAT_LOW_T   10
 #define CPU_HI	    100
+#define MEM_LOW	    50
 #define INTERVAL    1
 
 /* devices */
@@ -24,7 +25,8 @@
 #define VOL_MUTE_S  "\x05\x08 vol\x0a M"
 #define CPU_S	    "\x05\x08 cpu\x09 %02d%%"
 #define CPU_HI_S    "\x05\x08 cpu\x0a %02d%%"
-#define MEM_S	    "\x05\x08 mem\x09 %ld%%"
+#define MEM_S	    "\x05\x08 mem\x09 %d%%"
+#define MEM_LOW_S   "\x05\x08 mem\x0a %d%%"
 #define BAT_FULL_S  "\x0e\x0b bat F "
 #define BAT_S	    "\x0e\x0b bat D\x0c %d%%\x0b, %02d:%02d "
 #define BAT_LOW_S   "\x0e\x0b bat D\x0d %d%%\x0b, %02d:%02d "
